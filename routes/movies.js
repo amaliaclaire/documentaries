@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../db')
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('movies/index', {title: 'amalia\'s movies list'});
+  db('movies').then(movies =>{
+    res.render('movies/index', {movies});
+  })
+
 });
 
 module.exports = router;

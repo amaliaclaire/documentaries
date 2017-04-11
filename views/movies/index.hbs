@@ -1,3 +1,33 @@
 <h1>{{title}}</h1>
 <a href='/'> back to homepage</a>
 <p>handlebars shitttt</p>
+
+
+<h1>{{ heading }}</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Director</th>
+      <th>Year</th>
+      <th>My Rating</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each movies}}
+    <tr>
+      <td>{{title}}</td>
+      <td>{{director}}</td>
+      <td>{{year}}</td>
+      <td>{{my_rating}}</td>
+      <td>edit</td>
+      <td>delete</td>
+
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<br>
+<a href="/">Return to home page</a>
