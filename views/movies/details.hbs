@@ -1,13 +1,13 @@
 <h1>{{title}}</h1>
 <a href='/'> back to homepage</a>
-<p>handlebars shitttt</p>
+<p>SINGLE MOVIE</p>
 
 
 <h1>{{ heading }}</h1>
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
+      <th><a href=''>Title</a></th>
       <th>Director</th>
       <th>Year</th>
       <th>My Rating</th>
@@ -17,18 +17,18 @@
     </tr>
   </thead>
   <tbody>
-    {{#each movies}}
+
     <tr>
-      <td><a href="/movies/{{id}}">{{title}}</a></td>
-      <td>{{director}}</td>
-      <td>{{year}}</td>
-      <td>{{my_rating}}</td>
-      <td><img height='100' width='50' src="{{poster_url}}"></td>
+      <td>{{amalia.title}}</td>
+      <td>{{amalia.director}}</td>
+      <td>{{amalia.year}}</td>
+      <td>{{amalia.my_rating}}</td>
+      <td><img height='100' width='50' src="{{amalia.poster_url}}"></td>
       <td>edit</td>
       <td>delete</td>
 
     </tr>
-    {{/each}}
+
   </tbody>
 </table>
 <br>
