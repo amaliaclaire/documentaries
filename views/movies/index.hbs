@@ -3,6 +3,8 @@
 <p>handlebars shitttt</p>
 
 
+
+
 <h1>{{ heading }}</h1>
 <table class="table">
   <thead>
@@ -12,7 +14,6 @@
       <th>Year</th>
       <th>My Rating</th>
       <th>Movie Poster</th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -25,9 +26,26 @@
       <td>{{my_rating}}</td>
       <td><img height='100' width='50' src="{{poster_url}}"></td>
       <td>edit</td>
-      <td>delete</td>
+      <td>
+          <form action="/movies/{{this.id}}?_method=DELETE" method="POST">
+            <input class="btn btn-sm btn-danger"
+            type="submit"
+            name="delete"
+            value="Delete Movie">
+
+        </form></td>
+        <td>
+            <form action="/movies/{{this.id}}/edits" method="GET">
+              <input class="btn btn-sm btn-danger"
+              type="submit"
+              name="edit"
+              value="edit Movie">
+
+          </form></td>
 
     </tr>
+
+
     {{/each}}
   </tbody>
 </table>

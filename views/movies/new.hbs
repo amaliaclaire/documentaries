@@ -9,7 +9,7 @@
     <label for="item">Year</label> <input id="year" name="year" type="text" class="form-control" value="{{movies.year}}">
   </div>
   <div class="form-group">
-    <label for="item">My Rating</label> <input id="my-rating" name="my-rating" type="text" class="form-control" value="{{movies.my_rating}}">
+    <label for="item">My Rating</label> <input id="my-rating" name="my-rating" type="number" class="form-control" min="1" max="5" value="{{movies.my_rating}}">
   </div>
   <div class="form-group">
     <label for="image">Poster URL</label> <input id="poster-url" name="poster-url" type="text" class="form-control" value="{{movies.poster_url}}">

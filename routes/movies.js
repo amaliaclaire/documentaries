@@ -11,14 +11,16 @@ router.get('/', function(req, res, next) {
 
 });
 
+//get to the form
 router.get('/new', function(req, res, next){
   res.render('movies/new')
 })
 
 
 
-router.get('/:id', function(req, res, next){
-  let id = req.params.id
+//get a single ID
+router.get('/:id', function(req, res, next){ // this router.get('/:id') allows us to retrieve 1 movie id
+  let id = req.params.id // req is requesting tot he server where the p
 
   db('movies').select('*').where({
     'id': id
@@ -27,7 +29,19 @@ router.get('/:id', function(req, res, next){
   })
 })
 
+router.get('/:id/edits', (req, res, next) => {
+  var id = req.params.id
+  db('movies').select('*').where({ id }).first().then(movie => {
+    res.render('movies/edits', { movie })
+  })
+ })
 
+
+
+
+
+
+//post adding a new movie
 
 router.post('/', (req, res, next) =>{
   var movie = {
@@ -43,6 +57,35 @@ router.post('/', (req, res, next) =>{
 
     res.redirect('/movies/' + id) // takes the actual path
 
+  })
+})
+
+
+//put update your stuff
+router.put('/', (req, res, next) =>{
+  var movie = {
+    title: req.body.title,
+    director: req.body.director,
+    year: req.body.year,
+    my_rating: req.body['my-rating'],
+    poster_url: req.body['poster-url']
+  }
+  db('movies').update(movie, '*').then((newMovie)=>{
+    console.log(newMovie)
+    var id = newMovie[0].id
+
+    res.redirect('/movies/' + id) // takes the actual path
+
+  })
+})
+
+
+//deleting a single movie
+
+router.delete('/:id', function (req, res, next){
+  var id = req.params.id
+  db('movies').del().where({id}).then(()=>{
+    res.redirect('/movies')
   })
 })
 
