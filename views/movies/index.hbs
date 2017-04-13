@@ -1,9 +1,5 @@
 <h1>{{title}}</h1>
 <a href='/'> back to homepage</a>
-<p>handlebars shitttt</p>
-
-
-
 
 <h1>{{ heading }}</h1>
 <table class="table">
@@ -35,7 +31,7 @@
 
         </form></td>
         <td>
-            <form action="/movies/{{this.id}}/edits" method="GET">
+            <form action="/movies/{{this.id}}/edits" method="PUT">
               <input class="btn btn-sm btn-danger"
               type="submit"
               name="edit"

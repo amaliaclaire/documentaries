@@ -29,6 +29,8 @@ router.get('/:id', function(req, res, next){ // this router.get('/:id') allows u
   })
 })
 
+
+//editing the single id
 router.get('/:id/edits', (req, res, next) => {
   var id = req.params.id
   db('movies').select('*').where({ id }).first().then(movie => {
@@ -44,6 +46,7 @@ router.get('/:id/edits', (req, res, next) => {
 //post adding a new movie
 
 router.post('/', (req, res, next) =>{
+
   var movie = {
     title: req.body.title,
     director: req.body.director,
@@ -51,18 +54,23 @@ router.post('/', (req, res, next) =>{
     my_rating: req.body['my-rating'],
     poster_url: req.body['poster-url']
   }
-  db('movies').insert(movie, '*').then((newMovie)=>{
-    console.log(newMovie)
-    var id = newMovie[0].id
-
-    res.redirect('/movies/' + id) // takes the actual path
-
-  })
+  //this is the year validation
+    var year = parseInt(req.body.year) //wes code
+    if (Number.isNaN(year) || year < 1878) {
+      res.render('movies/new', { error: 'Year is all fucked.', movie })
+     } else {
+       db('movies').insert(movie, '*').then(newMovie => {
+        var id = newMovie[0].id
+         res.redirect(`/movies/${id}`)
+       })
+     }
 })
 
 
 //put update your stuff
-router.put('/', (req, res, next) =>{
+router.put('/:id', (req, res, next) =>{
+  const id = req.params.id
+  console.log(req.params.id);
   var movie = {
     title: req.body.title,
     director: req.body.director,
@@ -70,12 +78,13 @@ router.put('/', (req, res, next) =>{
     my_rating: req.body['my-rating'],
     poster_url: req.body['poster-url']
   }
-  db('movies').update(movie, '*').then((newMovie)=>{
-    console.log(newMovie)
-    var id = newMovie[0].id
 
-    res.redirect('/movies/' + id) // takes the actual path
+  db('movies')
+  .update(movie, '*')
+  .where('id', id)
+  .then((movieStuff) =>{
 
+    res.redirect(`/movies/${id}`)
   })
 })
 

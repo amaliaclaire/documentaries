@@ -1,4 +1,5 @@
-<form method="PUT" action="/movies/{{movie.id}}?_method=PUT" class="well">
+
+<form method="POST" action="/movies/{{movie.id}}?_method=PUT" class="well">
   <div>Edit Here {{movie.title}}</div>
   <div class="form-group">
     <label for="name">Title</label> <input id="title" name="title"type="text" class="form-control" value="{{movie.title}}">
