@@ -11,7 +11,6 @@ module.exports = {
     seeds: {
       directory: path.join(__dirname, 'db', 'seeds')
     }
-
   },
   production: {
     client: 'pg',
@@ -22,6 +21,5 @@ module.exports = {
     seeds: {
       directory: path.join(__dirname, 'db', 'seeds')
     }
-
   }
 }
