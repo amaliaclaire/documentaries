@@ -14,7 +14,7 @@ module.exports = {
   },
   production: {
     client: 'pg',
-    connection: 'postgres://localhost/movie_crud_dev',
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: path.join(__dirname, 'db', 'migrations')
     },
