@@ -12,14 +12,9 @@ var hbs = require('hbs'); //partials
 
 var app = express();
 
-
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials'); //paritals
 
 
 // uncomment after placing your favicon in /public
